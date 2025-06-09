@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} BlogHome {% endblock title %}
+{% block blogactive %} active {% endblock blogactive %} 
+
+
+{% block body %}
+<div class="container my-3">
+    <h2 style="color:#E7F5DC;" >Coding Articles by THE BLOGOSPHERE</h2>
+    {% for post in allPosts  %}
+    <div  style="background-color: #E7F5DC ;" class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h5 class="d-inline-block mb-2 " style=" color: black; font-weight: bold; color: ; text-transform: capitalize; list-style-type: none;">Article  by {{post.author}}</h5>
+            <h3 class="mb-0" ><a  style="text-decoration: none; color: #728156; " href="/blog/{{post.slug}}">{{post.title}}</a></h3>
+            <div class="mb-1 text-muted">{{post.datetime}}</div>
+            <p class="card-text mb-auto">{{post.content| truncatechars:500}}</p>
+            <div class="my-2">
+            	<a style="background-color: #88976C;    color:#E7F5DC ; border-radius: 4px; margin: 1px 7px;"  href="/blog/{{post.slug}}" role="button" class="btn ">Continue reading</a>
+            </div>
+            
+        </div>
+       
+        </div>
+
+        {% endfor %}
+    </div>
+ {% endblock %}
